@@ -1,10 +1,7 @@
-numpy
-pandas
-scikit-learn
-matplotlib
-folium
-streamlit
-streamlit-folium
-yfinance
-requests
-joblib
+streamlit>=1.37
+streamlit-folium>=0.20
+folium>=0.17
+numpy>=1.26
+pandas>=2.2
+scikit-learn>=1.5
+requests>=2.32
