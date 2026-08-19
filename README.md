@@ -24,4 +24,4 @@ streamlit run app.py
 This is a classroom simulation. It is not investment advice, emergency guidance, or a validated operational forecast system.
 
 ## Suggested citation / credit line
-Copyright (c) 2026 [Student Name]. All rights reserved unless a LICENSE file states otherwise.
+Copyright (c) 2026 Ryan Zhou. All rights reserved unless a LICENSE file states otherwise.
