@@ -1,0 +1,10 @@
+numpy
+pandas
+scikit-learn
+matplotlib
+folium
+streamlit
+streamlit-folium
+yfinance
+requests
+joblib
