@@ -32,6 +32,8 @@ from sklearn.preprocessing import OneHotEncoder, StandardScaler
 from streamlit_folium import st_folium
 
 APP_TITLE = "Energy Resource Shock Simulator"
+PROJECT_AUTHOR = "Ryan Zhou"
+PROJECT_MENTOR = "Dr. Qingyang Xiao"
 RANDOM_SEED = 42
 WINDOW_DAYS = 7
 MAX_WORKSPACES = 3
@@ -806,11 +808,13 @@ def render_header(events: list[dict[str, Any]], sim_date: date) -> None:
           <div>
             <h1>{APP_TITLE}</h1>
             <p>Click the global map, add a crisis event, and forecast energy and commodity supply-chain impacts.</p>
+            <p class="project-credit"><strong>Author:</strong> {PROJECT_AUTHOR} &nbsp;·&nbsp; <strong>Mentor:</strong> {PROJECT_MENTOR}</p>
           </div>
           <div class="lovable-pill-row">
             <span class="lovable-pill primary">{len(events)} events</span>
             <span class="lovable-pill">{active_count} active</span>
             <span class="lovable-pill">{active_workspace()['name']}</span>
+            <span class="lovable-pill">Student app</span>
           </div>
         </div>
         """,
@@ -882,6 +886,7 @@ def render_workspace_bar() -> None:
 def render_sidebar(events: list[dict[str, Any]]) -> None:
     with st.sidebar:
         st.header("Add supply shock")
+        st.caption(f"Author: {PROJECT_AUTHOR} · Mentor: {PROJECT_MENTOR}")
         st.caption("Click the map to prefill latitude/longitude, then save the event here.")
         with st.form("add_event_form", clear_on_submit=False):
             name = st.text_input("Event name", key="event_name")
@@ -1139,6 +1144,7 @@ def render_footer() -> None:
         """
         <hr/>
         <p class="small-note">
+        <strong>Author:</strong> Ryan Zhou &nbsp;·&nbsp; <strong>Mentor:</strong> Dr. Qingyang Xiao<br/>
         Built as a GitHub/Streamlit-ready student prototype. The uploaded Lovable React UI is preserved in <code>lovable_ui_source/</code>, while <code>app.py</code> is the runnable Streamlit conversion.
         </p>
         """,

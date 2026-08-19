@@ -1,5 +1,9 @@
 # Lovable UI integration notes
 
+**Author:** Ryan Zhou  
+**Mentor:** Dr. Qingyang Xiao
+
+
 The uploaded `src.zip` contained a Lovable React/TypeScript front end under `src/`. It used TanStack Router, Leaflet, Supabase auth/workspaces, shadcn-style UI components, a warm neutral design system, map-click event creation, a time bar, and event cards.
 
 Because Streamlit cannot directly run React/TanStack components as its main app, the UI was integrated by translating the interaction design into Streamlit-native Python:

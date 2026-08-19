@@ -1,8 +1,11 @@
 # Energy Resource Shock Simulator
 
+**Author:** Ryan Zhou  
+**Mentor:** Dr. Qingyang Xiao
+
 GitHub/Streamlit-ready student prototype for simulating how wars, disasters, port closures, pipeline failures, cyberattacks, sanctions, and other supply-chain shocks may affect energy and commodity resources.
 
-This version integrates the Lovable UI design from the uploaded `src.zip` into a runnable Streamlit app. The original Lovable React/TypeScript source is preserved in `lovable_ui_source/` for reference, while `app.py` is the deployable Python Streamlit conversion.
+This version is prepared as a GitHub-ready repository for Ryan Zhou and integrates the Lovable UI design from the uploaded `src.zip` into a runnable Streamlit app. The original Lovable React/TypeScript source is preserved in `lovable_ui_source/` for reference, while `app.py` is the deployable Python Streamlit conversion.
 
 ## What was integrated from the Lovable UI
 
@@ -28,6 +31,8 @@ The included model labels are synthetic and designed for a classroom prototype. 
 ```text
 .
 ├── app.py                              # Main Streamlit app; set this as the Streamlit entry point
+├── AUTHORS.md                            # Author and mentor credits
+├── CITATION.cff                          # GitHub citation metadata
 ├── requirements.txt                    # Python packages Streamlit Cloud installs
 ├── .streamlit/config.toml              # Theme and server config
 ├── assets/lovable_theme.css            # Converted Lovable visual theme for Streamlit
@@ -56,7 +61,7 @@ streamlit run app.py
 ```bash
 git init
 git add .
-git commit -m "Initial Streamlit energy shock simulator"
+git commit -m "Initial Ryan Zhou energy shock simulator"
 git branch -M main
 git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
 git push -u origin main
@@ -71,6 +76,10 @@ Use these settings when creating the app:
 - Main file path: `app.py`
 
 Streamlit Cloud will install packages from `requirements.txt` automatically.
+
+## Authorship and citation
+
+Author: Ryan Zhou. Mentor: Dr. Qingyang Xiao. Please keep `AUTHORS.md`, `CITATION.cff`, and the copyright notes with the repository when uploading to GitHub.
 
 ## Suggested next upgrades
 
