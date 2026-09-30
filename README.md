@@ -1,94 +1,83 @@
-# Energy Resource Shock Simulator
+# Energy Resource Shock Simulator AI App
 
 **Author:** Ryan Zhou  
 **Mentor:** Dr. Qingyang Xiao
 
-GitHub/Streamlit-ready student prototype for simulating how wars, disasters, port closures, pipeline failures, cyberattacks, sanctions, and other supply-chain shocks may affect energy and commodity resources.
+Interactive student-oriented AI simulation and analysis app for exploring how wars, earthquakes, hurricanes, port closures, sanctions, cyberattacks and other disruptions can affect global energy and commodity resource flows.
 
-This version is prepared as a GitHub-ready repository for Ryan Zhou and integrates the Lovable UI design from the uploaded `src.zip` into a runnable Streamlit app. The original Lovable React/TypeScript source is preserved in `lovable_ui_source/` for reference, while `app.py` is the deployable Python Streamlit conversion.
+**Live App:** https://energy-resource-shock-simulator-ai.streamlit.app/  
+**GitHub:** https://github.com/qxiao2ub/Energy-Resource-Shock-Simulator-AI-App
 
-## What was integrated from the Lovable UI
+## New UI integration
 
-- Full-width global map experience with clickable event placement.
-- Flag-style event markers and severity circles.
-- Lovable-inspired warm neutral theme, rounded cards, pills, and map-first layout.
-- Event types and colors from the uploaded React UI.
-- Time controls that update event status: happening now, about to happen, just ended, inactive.
-- Workspace concept with up to 3 workspaces.
-- Event cards with sorting, status labels, and remove controls.
+This version integrates the newly supplied Lovable UI into a Streamlit-compatible application. The original React/TanStack source is preserved in `lovable_ui_source/`, while `app.py` implements the interface and simulation behaviors natively in Streamlit/Folium.
 
-## AI features included
+Major UI features include a dark simulation map, resource selector, supply/demand/trade/money/event map modes, resource-flow routes, disruption rings, hubs, user event flags, simulation HUD, scenario clock, timeline, workspace controls and AI analysis tabs.
 
-- **Machine learning forecast:** Random Forest model estimates 30-day commodity price change and a supply-risk index.
-- **Deep learning / neural network:** Scikit-learn MLP classifier labels event-resource cases as Low, Medium, High, or Critical risk.
-- **Clustering:** K-means groups crisis events into interpretable clusters.
-- **Reinforcement learning:** A simple Q-learning policy recommends response actions based on risk, duration, and resource criticality.
+See `LOVABLE_UI_INTEGRATION.md` for a detailed mapping of the Lovable UI into Streamlit.
 
-The included model labels are synthetic and designed for a classroom prototype. Replace them with validated historical event/commodity data before any serious use.
+## AI / modeling features
 
-## Repository structure
+- **Machine learning:** Random Forest regression for educational 30-day resource price-change and supply-risk scenarios.
+- **Deep learning / neural network:** MLP classification of crisis risk levels.
+- **Clustering:** K-means crisis-event grouping.
+- **Reinforcement learning:** Q-learning response recommendation prototype.
+- **Deterministic resource-flow simulator:** country supply/demand, hubs, routes, disruption propagation and scenario timeline.
 
-```text
-.
-├── app.py                              # Main Streamlit app; set this as the Streamlit entry point
-├── AUTHORS.md                            # Author and mentor credits
-├── CITATION.cff                          # GitHub citation metadata
-├── requirements.txt                    # Python packages Streamlit Cloud installs
-├── .streamlit/config.toml              # Theme and server config
-├── assets/lovable_theme.css            # Converted Lovable visual theme for Streamlit
-├── lovable_ui_source/src/              # Original Lovable React/TypeScript UI source from uploaded zip
-├── Energy_Resource_Shock_AI_App_Colab.ipynb  # Colab notebook prototype, if included
-├── LOVABLE_UI_INTEGRATION.md           # Conversion notes
-├── COPYRIGHT_AND_LICENSE_NOTES.md      # Student copyright/licensing guidance
-└── .gitignore
-```
+The included models train on synthetic classroom labels. Replace those labels with validated historical data before any serious analytical use.
+
+## No-database cumulative app-user counter
+
+The visible **Cumulative app users** count increments once per Streamlit browser session and is shown in the header, sidebar and floating app badge.
+
+For durable persistence across Streamlit Community Cloud restarts, configure the included **GitHub-file counter**. It stores only the integer count in `data/visitor_count.json` and uses no database. Follow `COUNTER_SETUP.md`.
+
+Without GitHub-file mode, the app falls back to a local file. Local mode works immediately but Streamlit Cloud can reset local files during a rebuild/restart.
 
 ## Run locally
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate  # Windows: .venv\Scripts\activate
+# Windows: .venv\Scripts\activate
+# macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
 streamlit run app.py
 ```
 
-## Upload to GitHub
-
-1. Unzip this repo package.
-2. Create a new empty GitHub repository.
-3. Upload all files/folders from the unzipped folder to the repository root, or use Git:
-
-```bash
-git init
-git add .
-git commit -m "Initial Ryan Zhou energy shock simulator"
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO_NAME.git
-git push -u origin main
-```
-
 ## Deploy on Streamlit Community Cloud
 
-Use these settings when creating the app:
-
-- Repository: your new GitHub repo
 - Branch: `main`
-- Main file path: `app.py`
+- Main file: `app.py`
 
-Streamlit Cloud will install packages from `requirements.txt` automatically.
+See `GITHUB_UPLOAD_STEPS.md`.
 
-## Authorship and citation
+## Repository structure
 
-Author: Ryan Zhou. Mentor: Dr. Qingyang Xiao. Please keep `AUTHORS.md`, `CITATION.cff`, and the copyright notes with the repository when uploading to GitHub.
+```text
+app.py
+requirements.txt
+.streamlit/
+  config.toml
+  secrets.toml.example
+assets/
+  lovable_dark_theme.css
+core/
+  modeling.py
+  simulation.py
+  visitor_counter.py
+data/
+  visitor_count.json
+lovable_ui_source/
+Energy_Resource_Shock_AI_App_Colab.ipynb
+README.md
+COUNTER_SETUP.md
+LOVABLE_UI_INTEGRATION.md
+GITHUB_UPLOAD_STEPS.md
+AUTHORS.md
+CITATION.cff
+COPYRIGHT_AND_LICENSE_NOTES.md
+```
 
-## Suggested next upgrades
+## Educational-use notice
 
-- Replace synthetic training data with historical event and commodity datasets.
-- Add free public feeds such as World Bank Pink Sheet, EIA Open Data, and GDELT.
-- Save workspaces to Supabase, Firebase, or a simple database.
-- Add user authentication if students need persistent individual accounts.
-- Add model cards and classroom rubrics for explaining the assumptions.
-
-## Educational disclaimer
-
-This app is an educational simulation only. It is not investment advice, emergency guidance, or a validated operational forecast system.
+This application is a student prototype. It is not investment advice, emergency guidance, a validated market forecast, or an operational supply-chain decision system.

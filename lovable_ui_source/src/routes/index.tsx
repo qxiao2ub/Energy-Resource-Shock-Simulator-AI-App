@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/useAuth";
@@ -27,6 +27,10 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Slider } from "@/components/ui/slider";
 import { TimeBar, MS_PER_DAY, MS_PER_HOUR } from "@/components/TimeBar";
+import { SimulationHUD } from "@/components/SimulationHUD";
+import { MapVisualization } from "@/components/MapVisualization";
+import { ScenarioTimeline } from "@/components/ScenarioTimeline";
+import { simulate, type FlowMode, type Resource } from "@/lib/simulation";
 import {
   getEventStatus,
   STATUS_LABEL,
@@ -131,6 +135,8 @@ function Index() {
   const [now, setNow] = useState(() => Date.now());
   const [running, setRunning] = useState(false);
   const [speed, setSpeed] = useState(1);
+  const [resource, setResource] = useState<Resource>("Oil");
+  const [flowMode, setFlowMode] = useState<FlowMode>("All");
 
   useEffect(() => {
     if (!running) return;
@@ -221,6 +227,10 @@ function Index() {
   };
 
   const events = user ? (eventsQuery.data ?? []) : guestEvents;
+  const simulationTime = Math.floor(now / (MS_PER_HOUR / 4)) * (MS_PER_HOUR / 4);
+  const simulation = useMemo(() => simulate(events, resource, simulationTime), [events, resource, simulationTime]);
+  const mapTime = Math.floor(now / MS_PER_HOUR) * MS_PER_HOUR;
+  const mapSimulation = useMemo(() => simulate(events, resource, mapTime), [events, resource, mapTime]);
 
   const addEvent = (event: MapEvent) => {
     if (!user) {
@@ -264,8 +274,23 @@ function Index() {
         events={events}
         onAddEvent={addEvent}
         now={now}
+        mapSimulation={mapSimulation}
+        resource={resource}
+        flowMode={flowMode}
+        running={running}
+        speed={speed}
         accountSlot={<AuthBar email={loading ? null : (user?.email ?? null)} />}
       />
+
+      <SimulationHUD
+        state={simulation}
+        resource={resource}
+        onResource={setResource}
+        mode={flowMode}
+        onMode={setFlowMode}
+        running={running}
+      />
+
 
       <TimeBar
         now={now}
@@ -277,6 +302,10 @@ function Index() {
         onSpeedChange={setSpeed}
         onReset={() => setNow(Date.now())}
       />
+      <ScenarioTimeline state={simulation} events={events} now={now} onSetDate={(t) => { setRunning(false); setNow(t); }} onPlay={() => {
+        const first = Math.min(...events.map(e => Date.parse(`${e.startDate}T00:00:00Z`)).filter(Number.isFinite));
+        if (Number.isFinite(first)) { setNow(first); setRunning(true); }
+      }} />
 
       {user && (
         <WorkspaceBar
@@ -355,11 +384,21 @@ function MapSection({
   events,
   onAddEvent,
   now,
+  mapSimulation,
+  resource,
+  flowMode,
+  running,
+  speed,
   accountSlot,
 }: {
   events: MapEvent[];
   onAddEvent: (event: MapEvent) => void;
   now: number;
+  mapSimulation: ReturnType<typeof simulate>;
+  resource: Resource;
+  flowMode: FlowMode;
+  running: boolean;
+  speed: number;
   accountSlot?: React.ReactNode;
 }) {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -513,11 +552,11 @@ function MapSection({
   };
 
   return (
-    <section className="relative z-0 h-[70vh] w-full overflow-hidden border-b-4 border-border">
+    <section className="relative z-0 h-[clamp(620px,78vh,760px)] w-full overflow-hidden border-b-4 border-border">
       <div
         ref={mapRef}
-        className="absolute inset-0 z-0"
-        style={{ cursor: flagCursor(CURSOR_FLAG_COLOR) }}
+        className="map-dark absolute inset-0 z-0 bg-muted"
+        style={{ cursor: flagCursor(CURSOR_FLAG_COLOR), ['--flag-cursor' as string]: flagCursor(CURSOR_FLAG_COLOR) }}
         aria-label="Interactive world map"
         role="img"
       />
@@ -531,7 +570,9 @@ function MapSection({
         </div>
       )}
 
-      <div className="pointer-events-none absolute inset-0 z-20 flex items-start justify-between gap-4 p-6 sm:p-8">
+      <MapVisualization map={mapInstance.current} L={leafletRef.current} state={mapSimulation} mode={flowMode} running={running} speed={speed} resource={resource} onAddAt={(lat,lng) => { setPending({lat,lng}); setLatText(lat.toFixed(1)); setLngText(lng.toFixed(1)); }} />
+
+      <div className="pointer-events-none absolute inset-x-0 top-0 z-20 flex items-start justify-between gap-4 p-3 sm:p-8">
         <header className="pointer-events-auto self-start">
           <div className="rounded-xl bg-card/90 px-5 py-4 shadow-lg ring-1 ring-border/50 backdrop-blur-sm">
             <h1 className="text-lg font-semibold tracking-tight text-card-foreground sm:text-xl">
@@ -544,6 +585,7 @@ function MapSection({
         </header>
         {accountSlot}
       </div>
+
 
       {hover && (
         <div className="pointer-events-none absolute bottom-4 left-4 z-20 rounded-lg bg-card/90 px-3 py-1.5 font-mono text-xs text-card-foreground shadow-md ring-1 ring-border/50 backdrop-blur-sm">

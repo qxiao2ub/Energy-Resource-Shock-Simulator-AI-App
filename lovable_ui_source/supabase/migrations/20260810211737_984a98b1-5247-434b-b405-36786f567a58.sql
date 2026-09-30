@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX IF NOT EXISTS workspaces_user_name_unique ON public.workspaces (user_id, lower(name));

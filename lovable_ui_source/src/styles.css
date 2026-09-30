@@ -58,74 +58,91 @@
 }
 
 :root {
+  color-scheme: dark;
   --radius: 0.75rem;
-  --background: oklch(0.97 0.01 85);
-  --foreground: oklch(0.2 0.04 260);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.2 0.04 260);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.2 0.04 260);
-  --primary: oklch(0.35 0.08 250);
-  --primary-foreground: oklch(0.97 0.01 85);
-  --secondary: oklch(0.93 0.02 85);
-  --secondary-foreground: oklch(0.25 0.04 260);
-  --muted: oklch(0.92 0.015 85);
-  --muted-foreground: oklch(0.5 0.04 260);
-  --accent: oklch(0.55 0.12 170);
-  --accent-foreground: oklch(0.99 0.01 170);
-  --destructive: oklch(0.55 0.2 25);
+  --background: oklch(0.18 0.05 260);
+  --foreground: oklch(0.94 0.01 85);
+  --card: oklch(0.24 0.04 260);
+  --card-foreground: oklch(0.96 0.01 85);
+  --popover: oklch(0.26 0.045 260);
+  --popover-foreground: oklch(0.96 0.01 85);
+  --primary: oklch(0.78 0.13 75);
+  --primary-foreground: oklch(0.18 0.04 260);
+  --secondary: oklch(0.3 0.04 260);
+  --secondary-foreground: oklch(0.93 0.01 85);
+  --muted: oklch(0.28 0.04 260);
+  --muted-foreground: oklch(0.7 0.03 260);
+  --accent: oklch(0.72 0.12 55);
+  --accent-foreground: oklch(0.18 0.04 260);
+  --destructive: oklch(0.65 0.2 25);
   --destructive-foreground: oklch(0.98 0.01 25);
-  --border: oklch(0.85 0.02 85);
-  --input: oklch(0.85 0.02 85);
-  --ring: oklch(0.55 0.12 170);
-  --chart-1: oklch(0.55 0.12 170);
-  --chart-2: oklch(0.45 0.1 220);
-  --chart-3: oklch(0.65 0.14 45);
-  --chart-4: oklch(0.75 0.16 85);
-  --chart-5: oklch(0.4 0.08 300);
-  --sidebar: oklch(0.95 0.015 85);
-  --sidebar-foreground: oklch(0.2 0.04 260);
-  --sidebar-primary: oklch(0.35 0.08 250);
-  --sidebar-primary-foreground: oklch(0.97 0.01 85);
-  --sidebar-accent: oklch(0.93 0.02 85);
-  --sidebar-accent-foreground: oklch(0.25 0.04 260);
-  --sidebar-border: oklch(0.85 0.02 85);
-  --sidebar-ring: oklch(0.55 0.12 170);
+  --border: oklch(0.4 0.05 260);
+  --input: oklch(0.35 0.05 260);
+  --ring: oklch(0.78 0.13 75);
+  --chart-1: oklch(0.78 0.13 75);
+  --chart-2: oklch(0.7 0.12 220);
+  --chart-3: oklch(0.72 0.12 55);
+  --chart-4: oklch(0.85 0.16 80);
+  --chart-5: oklch(0.68 0.1 300);
+  --sidebar: oklch(0.22 0.04 260);
+  --sidebar-foreground: oklch(0.94 0.01 85);
+  --sidebar-primary: oklch(0.78 0.13 75);
+  --sidebar-primary-foreground: oklch(0.18 0.04 260);
+  --sidebar-accent: oklch(0.3 0.04 260);
+  --sidebar-accent-foreground: oklch(0.93 0.01 85);
+  --sidebar-border: oklch(0.4 0.05 260);
+  --sidebar-ring: oklch(0.78 0.13 75);
+  --sim-flow: oklch(0.43 0.17 225);
+  --sim-money: oklch(0.58 0.16 145);
+  --sim-node: oklch(0.83 0.16 75);
+  --sim-node-edge: oklch(0.28 0.04 250);
+  --sim-border: oklch(0.39 0.07 230);
+  --sim-positive: oklch(0.52 0.14 155);
+  --sim-stress: oklch(0.8 0.15 58);
+  --sim-disrupted: oklch(0.57 0.22 28);
 }
 
 .dark {
-  --background: oklch(0.18 0.04 260);
+  --background: oklch(0.2 0.05 260);
   --foreground: oklch(0.95 0.01 85);
-  --card: oklch(0.22 0.05 260);
+  --card: oklch(0.26 0.045 260);
   --card-foreground: oklch(0.95 0.01 85);
-  --popover: oklch(0.22 0.05 260);
+  --popover: oklch(0.26 0.045 260);
   --popover-foreground: oklch(0.95 0.01 85);
-  --primary: oklch(0.75 0.1 170);
-  --primary-foreground: oklch(0.15 0.04 260);
-  --secondary: oklch(0.28 0.05 260);
+  --primary: oklch(0.8 0.12 70);
+  --primary-foreground: oklch(0.18 0.04 260);
+  --secondary: oklch(0.32 0.045 260);
   --secondary-foreground: oklch(0.95 0.01 85);
-  --muted: oklch(0.28 0.05 260);
-  --muted-foreground: oklch(0.65 0.04 260);
-  --accent: oklch(0.65 0.12 170);
-  --accent-foreground: oklch(0.15 0.04 260);
+  --muted: oklch(0.32 0.045 260);
+  --muted-foreground: oklch(0.68 0.035 260);
+  --accent: oklch(0.74 0.11 50);
+  --accent-foreground: oklch(0.18 0.04 260);
   --destructive: oklch(0.65 0.18 25);
   --destructive-foreground: oklch(0.98 0.01 25);
   --border: oklch(1 0 0 / 12%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.65 0.12 170);
-  --chart-1: oklch(0.65 0.12 170);
-  --chart-2: oklch(0.55 0.1 220);
-  --chart-3: oklch(0.75 0.14 45);
-  --chart-4: oklch(0.85 0.16 85);
-  --chart-5: oklch(0.5 0.08 300);
-  --sidebar: oklch(0.22 0.05 260);
+  --ring: oklch(0.8 0.12 70);
+  --chart-1: oklch(0.8 0.12 70);
+  --chart-2: oklch(0.6 0.1 220);
+  --chart-3: oklch(0.74 0.11 50);
+  --chart-4: oklch(0.85 0.16 80);
+  --chart-5: oklch(0.55 0.09 300);
+  --sidebar: oklch(0.26 0.045 260);
   --sidebar-foreground: oklch(0.95 0.01 85);
-  --sidebar-primary: oklch(0.75 0.1 170);
-  --sidebar-primary-foreground: oklch(0.15 0.04 260);
-  --sidebar-accent: oklch(0.28 0.05 260);
+  --sidebar-primary: oklch(0.8 0.12 70);
+  --sidebar-primary-foreground: oklch(0.18 0.04 260);
+  --sidebar-accent: oklch(0.32 0.045 260);
   --sidebar-accent-foreground: oklch(0.95 0.01 85);
   --sidebar-border: oklch(1 0 0 / 12%);
-  --sidebar-ring: oklch(0.65 0.12 170);
+  --sidebar-ring: oklch(0.8 0.12 70);
+  --sim-flow: oklch(0.43 0.17 225);
+  --sim-money: oklch(0.58 0.16 145);
+  --sim-node: oklch(0.83 0.16 75);
+  --sim-node-edge: oklch(0.28 0.04 250);
+  --sim-border: oklch(0.39 0.07 230);
+  --sim-positive: oklch(0.52 0.14 155);
+  --sim-stress: oklch(0.8 0.15 58);
+  --sim-disrupted: oklch(0.57 0.22 28);
 }
 
 @layer base {
@@ -136,9 +153,68 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    min-height: 100vh;
   }
 
   html {
     scroll-behavior: smooth;
   }
 }
+
+.map-dark .leaflet-tile-pane {
+  filter: none;
+}
+
+.map-dark .leaflet-control-zoom a,
+.map-dark .leaflet-control-attribution {
+  background: color-mix(in oklch, var(--card) 92%, transparent);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.map-dark .leaflet-control-zoom a:hover {
+  background: var(--secondary);
+}
+
+.map-dark .leaflet-control-attribution a {
+  color: var(--primary);
+}
+
+.map-dark .leaflet-tooltip {
+  background: var(--popover);
+  color: var(--popover-foreground);
+  border-color: var(--border);
+  box-shadow: 0 10px 30px oklch(0.04 0.01 255 / 45%);
+}
+
+.map-dark .leaflet-tooltip-top::before {
+  border-top-color: var(--popover);
+}
+
+@keyframes sim-flow { to { stroke-dashoffset: -52; } }
+.sim-route-moving { animation: sim-flow 4s linear infinite; }
+@media (prefers-reduced-motion: reduce) { .sim-route-moving { animation: none; } }
+
+/* Country/hub overlay shapes keep the red flag cursor instead of Leaflet's pointer */
+.leaflet-overlay-pane path.leaflet-interactive {
+  cursor: var(--flag-cursor, pointer);
+}
+
+.sim-route-label {
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  background: color-mix(in oklab, var(--card) 88%, transparent);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.35);
+  pointer-events: none;
+}
+.sim-route-label-disrupted {
+  border-color: var(--sim-disrupted);
+  color: var(--sim-disrupted);
+}
+.sim-route-label-hidden { display: none; }

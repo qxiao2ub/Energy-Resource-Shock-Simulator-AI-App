@@ -1,7 +1,9 @@
 streamlit>=1.37
 streamlit-folium>=0.20
+streamlit-autorefresh>=1.0.1
 folium>=0.17
 numpy>=1.26
 pandas>=2.2
 scikit-learn>=1.5
 requests>=2.32
+filelock>=3.15

@@ -1,0 +1,4 @@
+- [x] Preserve existing map, authentication, workspaces, event creation and time controls.
+- [x] Add clearly labeled illustrative resource state, map layers, inspection and time-driven scenario effects.
+- [x] Verify desktop/mobile behavior and interactive event playback: 34 map features render at both widths with no page errors; a guest event changes simulated price, supply, route disruption and timeline as dates advance; playback animates route dashes; map inspection panel opens.
+- [x] Move the resource / simulated price / global index / view-mode readouts out of the map overlay into a strip below the map; confirmed below the map fold at 1280px and 390px with no page errors.

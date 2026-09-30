@@ -1,0 +1,1 @@
+REVOKE EXECUTE ON FUNCTION public.enforce_workspace_limit() FROM PUBLIC, anon, authenticated;
